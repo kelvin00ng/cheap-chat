@@ -44,10 +44,9 @@ export default function Footer({ className }: { className?: string }) {
   const mainContentParts = (
     typeof config?.customFooter === 'string'
       ? config.customFooter
-      : '[LibreChat ' +
+      : '[CheapChat ' +
         Constants.VERSION +
-        '](https://librechat.ai) - ' +
-        localize('com_ui_latest_footer')
+        '](https://cheap-chat.com)'
   ).split('|');
 
   const mainContentRender = mainContentParts.map((text, index) => (
