@@ -44,7 +44,7 @@ export default function Footer({ className }: { className?: string }) {
   const mainContentParts = (
     typeof config?.customFooter === 'string'
       ? config.customFooter
-      : '[CheapChat by' +
+      : '[CheapChat by ' +
           "Helix Solutions" +
         '](https://cheap-chat.com)'
   ).split('|');
