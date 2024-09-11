@@ -152,14 +152,14 @@ class OpenAIClient extends BaseClient {
     this.isUnofficialChatGptModel =
       model.startsWith('text-chat') || model.startsWith('text-davinci-002-render');
 
-    this.maxContextTokens =
-      this.options.maxContextTokens ??
-      getModelMaxTokens(
-        model,
-        this.options.endpointType ?? this.options.endpoint,
-        this.options.endpointTokenConfig,
-      ) ??
-      4095; // 1 less than maximum
+    this.maxContextTokens = 1000
+      //this.options.maxContextTokens ??
+      //getModelMaxTokens(
+        //model,
+        //this.options.endpointType ?? this.options.endpoint,
+        //this.options.endpointTokenConfig,
+      //) ??
+      //4095; // 1 less than maximum
 
     if (this.shouldSummarize) {
       this.maxContextTokens = Math.floor(this.maxContextTokens / 2);
@@ -402,7 +402,7 @@ class OpenAIClient extends BaseClient {
   getSaveOptions() {
     return {
       artifacts: this.options.artifacts,
-      maxContextTokens: this.options.maxContextTokens,
+      maxContextTokens: 1000,
       chatGptLabel: this.options.chatGptLabel,
       promptPrefix: this.options.promptPrefix,
       resendFiles: this.options.resendFiles,
@@ -897,12 +897,12 @@ ${convo}
       model = this.modelOptions.model;
     }
 
-    const maxContextTokens =
-      getModelMaxTokens(
-        model,
-        this.options.endpointType ?? this.options.endpoint,
-        this.options.endpointTokenConfig,
-      ) ?? 4095; // 1 less than maximum
+    const maxContextTokens = 1000
+      //getModelMaxTokens(
+        //model,
+        //this.options.endpointType ?? this.options.endpoint,
+        //this.options.endpointTokenConfig,
+      //) ?? 4095; // 1 less than maximum
 
     // 3 tokens for the assistant label, and 98 for the summarizer prompt (101)
     let promptBuffer = 101;
