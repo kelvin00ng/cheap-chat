@@ -152,7 +152,7 @@ class OpenAIClient extends BaseClient {
     this.isUnofficialChatGptModel =
       model.startsWith('text-chat') || model.startsWith('text-davinci-002-render');
 
-    this.maxContextTokens = 1000
+    this.maxContextTokens = process.env.SET_MAX_CONTEXT_TOKEN
       //this.options.maxContextTokens ??
       //getModelMaxTokens(
         //model,
@@ -402,7 +402,7 @@ class OpenAIClient extends BaseClient {
   getSaveOptions() {
     return {
       artifacts: this.options.artifacts,
-      maxContextTokens: 1000,
+      maxContextTokens: process.env.SET_MAX_CONTEXT_TOKEN,
       chatGptLabel: this.options.chatGptLabel,
       promptPrefix: this.options.promptPrefix,
       resendFiles: this.options.resendFiles,
@@ -897,7 +897,7 @@ ${convo}
       model = this.modelOptions.model;
     }
 
-    const maxContextTokens = 1000
+    const maxContextTokens = process.env.SET_MAX_CONTEXT_TOKEN
       //getModelMaxTokens(
         //model,
         //this.options.endpointType ?? this.options.endpoint,

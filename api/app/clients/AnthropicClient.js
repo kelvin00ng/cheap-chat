@@ -110,7 +110,7 @@ class AnthropicClient extends BaseClient {
     this.defaultVisionModel = this.options.visionModel ?? 'claude-3-sonnet-20240229';
     this.options.attachments?.then((attachments) => this.checkVisionRequest(attachments));
 
-    this.maxContextTokens = 1000;
+    this.maxContextTokens = process.env.SET_MAX_CONTEXT_TOKEN;
       //this.options.maxContextTokens ??
       //getModelMaxTokens(this.modelOptions.model, EModelEndpoint.anthropic) ??
       //100000;
@@ -822,7 +822,7 @@ class AnthropicClient extends BaseClient {
 
   getSaveOptions() {
     return {
-      maxContextTokens: 1000,
+      maxContextTokens: process.env.SET_MAX_CONTEXT_TOKEN,
       artifacts: this.options.artifacts,
       promptPrefix: this.options.promptPrefix,
       modelLabel: this.options.modelLabel,
