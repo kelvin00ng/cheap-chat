@@ -483,7 +483,8 @@ class PluginsClient extends OpenAIClient {
       this.getTokenCountForMessage(messagePayload);
 
     let promptBody = '';
-    const maxTokenCount = this.maxPromptTokens;
+    const maxTokenCount = process.env.SET_MAX_CONTEXT_TOKEN;
+    //this.maxPromptTokens;
     // Iterate backwards through the messages, adding them to the prompt until we reach the max token count.
     // Do this within a recursive async function so that it doesn't block the event loop for too long.
     const buildPromptBody = async () => {
